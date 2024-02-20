@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityMauiMediaElement.ViewModels;
+using CommunityMauiMediaElement.Views;
+using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace CommunityMauiMediaElement
 {
@@ -9,6 +12,7 @@ namespace CommunityMauiMediaElement
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkitMediaElement()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -18,6 +22,9 @@ namespace CommunityMauiMediaElement
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
+
+            builder.Services.AddTransient<MyPage>();
+            builder.Services.AddTransient<MyViewModel>();
 
             return builder.Build();
         }
