@@ -23,6 +23,10 @@ namespace CommunityMauiMediaElement
     		builder.Logging.AddDebug();
 #endif
 
+            builder.Services.AddSingleton<AppShell>();
+            builder.Services.AddSingleton<IFileSystem>(FileSystem.Current);
+            
+            builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<MyPage>();
             builder.Services.AddTransient<MyViewModel>();
 

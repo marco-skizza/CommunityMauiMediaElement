@@ -8,6 +8,8 @@
         Spacing="30">
 
         <Label Text="Page after MediaElement > navigate back..." />
+        <Button Text="2) Go to next page > Unloaded gets called"
+                Clicked="Button_OnClicked" />
 
     </VerticalStackLayout>
 </ContentPage>
