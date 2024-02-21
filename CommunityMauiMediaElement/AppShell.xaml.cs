@@ -9,6 +9,7 @@ namespace CommunityMauiMediaElement
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(MyPage), typeof(MyPage));
+            Routing.RegisterRoute(nameof(MyThirdPage), typeof(MyThirdPage));
         }
     }
 }

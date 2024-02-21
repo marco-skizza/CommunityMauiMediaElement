@@ -9,10 +9,10 @@ namespace CommunityMauiMediaElement
         {
             InitializeComponent();
 
-            Appearing += OnAppearing;
+            Loaded += OnLoaded;
         }
 
-        private void OnAppearing(object? sender, EventArgs e)
+        private void OnLoaded(object? sender, EventArgs e)
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();

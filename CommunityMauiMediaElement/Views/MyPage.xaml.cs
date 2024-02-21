@@ -15,6 +15,7 @@ public partial class MyPage : ContentPage
 
     private void OnUnloaded(object? sender, EventArgs e)
     {
+        Debug.WriteLine("OnUnloaded() called");
         MyMediaElement.Pause();
     }
 
@@ -28,6 +29,12 @@ public partial class MyPage : ContentPage
         }
 
         MyMediaElement.Handler?.DisconnectHandler();
+        Debug.WriteLine("OnHandlerChanging.DisconnectHandler() called");
+    }
+
+    private async void Button_OnClicked(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(MyThirdPage));
     }
 
     ~MyPage()

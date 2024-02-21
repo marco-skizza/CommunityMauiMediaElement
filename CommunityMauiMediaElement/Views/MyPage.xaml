@@ -6,12 +6,19 @@
              x:Class="CommunityMauiMediaElement.Views.MyPage"
              x:DataType="viewModels:MyViewModel"
              Title="MyPage">
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        Padding="30"
+        Spacing="30">
 
         <toolkit:MediaElement x:Name="MyMediaElement"
                               ShouldAutoPlay="False"
                               Source="{Binding FilePath}"
                               HeightRequest="385" />
+
+        <Button Text="2) Go to next page > Unloaded gets called"
+                Clicked="Button_OnClicked" />
+
+        <Label Text="On iOS - Unloaded gets also called when entering full-screen mode of MediaElement" />
 
     </VerticalStackLayout>
 </ContentPage>
