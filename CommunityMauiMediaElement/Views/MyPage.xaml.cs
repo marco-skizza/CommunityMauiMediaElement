@@ -29,7 +29,9 @@ public partial class MyPage : ContentPage
         }
 
         MyMediaElement.Handler?.DisconnectHandler();
-        Debug.WriteLine("OnHandlerChanging.DisconnectHandler() called");
+        MyMediaElement.Dispose();
+
+        Debug.WriteLine("Dispose for MyMediaElement called");
     }
 
     private async void Button_OnClicked(object? sender, EventArgs e)
