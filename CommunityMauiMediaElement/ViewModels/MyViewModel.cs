@@ -12,6 +12,8 @@ public class MyViewModel
             return Foundation.NSBundle.MainBundle.BundlePath;
 #elif WINDOWS10_0_17763_0_OR_GREATER
             return AppDomain.CurrentDomain.BaseDirectory;
+#elif ANDROID
+            return "file:///android_asset/";
 #else
             throw new NotImplementedException();
 #endif

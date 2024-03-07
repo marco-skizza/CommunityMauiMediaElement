@@ -8,12 +8,12 @@ namespace CommunityMauiMediaElement
         public MainPage()
         {
             InitializeComponent();
-
-            Loaded += OnLoaded;
         }
 
-        private void OnLoaded(object? sender, EventArgs e)
+        protected override void OnAppearing()
         {
+            base.OnAppearing();
+
             GC.Collect();
             GC.WaitForPendingFinalizers();
             var totalMemory = GC.GetTotalMemory(true);

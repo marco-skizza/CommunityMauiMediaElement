@@ -9,14 +9,17 @@ public partial class MyPage : ContentPage
     {
         InitializeComponent();
         BindingContext = viewModel;
-
-        Unloaded += OnUnloaded;
     }
 
     private void OnUnloaded(object? sender, EventArgs e)
     {
         Debug.WriteLine("OnUnloaded() called");
         MyMediaElement.Pause();
+
+#if ANDROID || WINDOWS10_0_17763_0_OR_GREATER
+        DisposeMediaElement();
+        Debug.WriteLine("MyMediaElement disposed (ANDROID + WinUI)");
+#endif
     }
 
     protected override void OnHandlerChanging(HandlerChangingEventArgs args)
@@ -28,10 +31,16 @@ public partial class MyPage : ContentPage
             return;
         }
 
+#if IOS || MACCATALYST
+        DisposeMediaElement();
+        Debug.WriteLine("MyMediaElement disposed (iOS)");
+#endif
+    }
+
+    private void DisposeMediaElement()
+    {
         MyMediaElement.Handler?.DisconnectHandler();
         MyMediaElement.Dispose();
-
-        Debug.WriteLine("Dispose for MyMediaElement called");
     }
 
     private async void Button_OnClicked(object? sender, EventArgs e)

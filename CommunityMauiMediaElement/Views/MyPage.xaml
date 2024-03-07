@@ -5,7 +5,8 @@
              xmlns:viewModels="clr-namespace:CommunityMauiMediaElement.ViewModels"
              x:Class="CommunityMauiMediaElement.Views.MyPage"
              x:DataType="viewModels:MyViewModel"
-             Title="MyPage">
+             Title="MyPage"
+             Unloaded="OnUnloaded">
     <VerticalStackLayout
         Padding="30"
         Spacing="30">
