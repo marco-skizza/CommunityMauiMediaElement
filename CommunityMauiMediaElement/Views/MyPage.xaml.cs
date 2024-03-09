@@ -16,9 +16,9 @@ public partial class MyPage : ContentPage
         Debug.WriteLine("OnUnloaded() called");
         MyMediaElement.Pause();
 
-#if ANDROID || WINDOWS10_0_17763_0_OR_GREATER
+#if ANDROID
         DisposeMediaElement();
-        Debug.WriteLine("MyMediaElement disposed (ANDROID + WinUI)");
+        Debug.WriteLine("MyMediaElement disposed (Android)");
 #endif
     }
 
@@ -31,7 +31,7 @@ public partial class MyPage : ContentPage
             return;
         }
 
-#if IOS || MACCATALYST
+#if IOS
         DisposeMediaElement();
         Debug.WriteLine("MyMediaElement disposed (iOS)");
 #endif
