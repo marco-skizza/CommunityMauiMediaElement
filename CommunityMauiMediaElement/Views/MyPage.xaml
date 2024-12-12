@@ -14,9 +14,9 @@
         <toolkit:MediaElement x:Name="MyMediaElement"
                               ShouldAutoPlay="False"
                               Source="{Binding FilePath}"
-                              HeightRequest="385" />
+                              HeightRequest="250" />
 
-        <Button Text="2) Go to next page > Unloaded gets called"
+        <Button Text="2) Go to next page > Unloaded gets called (iOS and Windows)"
                 Clicked="Button_OnClicked" />
 
         <Label Text="On iOS - Unloaded gets also called when entering full-screen mode of MediaElement" />

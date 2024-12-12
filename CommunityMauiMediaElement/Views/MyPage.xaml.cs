@@ -11,17 +11,22 @@ public partial class MyPage : ContentPage
         BindingContext = viewModel;
     }
 
+    /// <summary>
+    /// Gets only called on iOS and Windows when navigation to a next page.
+    /// </summary>
     private void OnUnloaded(object? sender, EventArgs e)
     {
         Debug.WriteLine("OnUnloaded() called");
-        MyMediaElement.Pause();
 
-#if ANDROID
-        DisposeMediaElement();
-        Debug.WriteLine("MyMediaElement disposed (Android)");
+#if IOS || WINDOWS10_0_17763_0_OR_GREATER
+        MyMediaElement.Pause();
+        Debug.WriteLine("MyMediaElement paused");
 #endif
     }
 
+    /// <summary>
+    /// Works for iOS, Android and Windows
+    /// </summary>
     protected override void OnHandlerChanging(HandlerChangingEventArgs args)
     {
         base.OnHandlerChanging(args);
@@ -31,16 +36,10 @@ public partial class MyPage : ContentPage
             return;
         }
 
-#if IOS
-        DisposeMediaElement();
-        Debug.WriteLine("MyMediaElement disposed (iOS)");
-#endif
-    }
+        Debug.WriteLine("OnHandlerChanging() called with null Handler");
 
-    private void DisposeMediaElement()
-    {
         MyMediaElement.Handler?.DisconnectHandler();
-        MyMediaElement.Dispose();
+        Debug.WriteLine("MyMediaElement disposed");
     }
 
     private async void Button_OnClicked(object? sender, EventArgs e)

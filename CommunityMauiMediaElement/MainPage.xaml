@@ -7,7 +7,7 @@
         Padding="30"
         Spacing="30">
 
-        <Label Text="1) On iOS - After several times navigating forward and back, observe in Debug-Output if ~MyPage() was called" />
+        <Label Text="1) After several times navigating forward and back, observe in Debug-Output if ~MyPage() was called" />
 
         <Button
             Text="Go to next page"
